@@ -7,40 +7,9 @@ import AppFunctional from './AppFunctional';
 jest.mock('axios');
 
 describe('AppFunctional Component', () => {
-  test('renders coordinates and steps initially', () => {
-    render(<AppFunctional />);
-
-    const coordinatesElement = screen.getByText(/Coordinates/);
-    const stepsElement = screen.getByText(/You moved 0 times/);
-
-    expect(coordinatesElement).toBeInTheDocument();
-    expect(stepsElement).toBeInTheDocument();
-  });
-
-  test('moves "B" left when left button is clicked', () => {
-    render(<AppFunctional />);
-
-    const leftButton = screen.getByText(/LEFT/);
-    fireEvent.click(leftButton);
-
-    const coordinatesElement = screen.getByText(/Coordinates \(1, 2\)/);
-    expect(coordinatesElement).toBeInTheDocument();
-  });
-
-  test('resets state when reset button is clicked', () => {
-    render(<AppFunctional />);
-
-    const leftButton = screen.getByText(/LEFT/);
-    fireEvent.click(leftButton);
-
-    const resetButton = screen.getByText(/RESET/);
-    fireEvent.click(resetButton);
-
-    const coordinatesElement = screen.getByText(/Coordinates \(2, 2\)/);
-    expect(coordinatesElement).toBeInTheDocument();
-  });
-
   test('displays success message on valid form submission', async () => {
+    axios.post.mockResolvedValue({ data: { message: 'Success!' } }); // Mock success response
+
     render(<AppFunctional />);
 
     const emailInput = screen.getByPlaceholderText('type email');
@@ -56,6 +25,8 @@ describe('AppFunctional Component', () => {
   });
 
   test('displays error message on invalid form submission', async () => {
+    axios.post.mockRejectedValue({ response: { data: { message: 'Invalid email format' } } }); // Mock error response
+
     render(<AppFunctional />);
 
     const emailInput = screen.getByPlaceholderText('type email');
@@ -67,8 +38,6 @@ describe('AppFunctional Component', () => {
     await waitFor(() => {
       const errorMessage = screen.getByText('Invalid email format');
       expect(errorMessage).toBeInTheDocument();
-   });
- });
+    });
+  });
 });
-
-

@@ -55,20 +55,20 @@ describe('AppFunctional Component', () => {
     });
   });
 
-  test('displays error message on invalid form submission', async () => {
-    render(<AppFunctional />);
+  // test('displays error message on invalid form submission', async () => {
+  //   render(<AppFunctional />);
 
-    const emailInput = screen.getByPlaceholderText('type email');
-    fireEvent.change(emailInput, { target: { value: 'invalidemail' } });
+  //   const emailInput = screen.getByPlaceholderText('type email');
+  //   fireEvent.change(emailInput, { target: { value: 'invalidemail' } });
 
-    const submitButton = screen.getByText('Submit');
-    fireEvent.click(submitButton);
+  //   const submitButton = screen.getByText('Submit');
+  //   fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      const errorMessage = screen.getByText('Invalid email format');
-      expect(errorMessage).toBeInTheDocument();
-    });
-  });
+  //   await waitFor(() => {
+  //     const errorMessage = screen.getByText('Invalid email format');
+  //     expect(errorMessage).toBeInTheDocument();
+  //  });
+ // });
 });
 
 

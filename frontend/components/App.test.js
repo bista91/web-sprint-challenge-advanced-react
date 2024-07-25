@@ -40,8 +40,8 @@ describe('AppFunctional Component', () => {
     expect(coordinatesElement).toBeInTheDocument();
   });
 
-  //test('displays success message on valid form submission', async () => {
-    //render(<AppFunctional />);
+  test('displays success message on valid form submission', async () => {
+    render(<AppFunctional />);
 
     const emailInput = screen.getByPlaceholderText('type email');
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
@@ -69,6 +69,6 @@ describe('AppFunctional Component', () => {
       expect(errorMessage).toBeInTheDocument();
    });
  });
-//});
+});
 
 

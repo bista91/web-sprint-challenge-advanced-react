@@ -33,7 +33,7 @@ describe('AppFunctional Component', () => {
     const leftButton = screen.getByText(/LEFT/);
     fireEvent.click(leftButton);
 
-    const resetButton = screen.getByText(/reset/);
+    const resetButton = screen.getByText(/RESET/);
     fireEvent.click(resetButton);
 
     const coordinatesElement = screen.getByText(/Coordinates \(2, 2\)/);

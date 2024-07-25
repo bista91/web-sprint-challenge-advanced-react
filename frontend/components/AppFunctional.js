@@ -149,7 +149,7 @@ export default function AppFunctional(props) {
         <input
           id="email"
           type="email"
-          placeholder="Type email"
+          placeholder="type email"
           value={email}
           onChange={onChange}
         />
